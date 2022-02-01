@@ -1,0 +1,24 @@
+.principal-part{
+  max-block-size: 76vh;
+  overflow: hidden;
+  overflow-y: scroll;
+  padding: 1em;
+.bar{
+  margin-top: 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  .part-node{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: -6px;
+  }
+  .bar-part{
+    width: 10px;
+    height: 50px;
+    background-color: black;
+    border-radius: 15px;
+  }
+}}
