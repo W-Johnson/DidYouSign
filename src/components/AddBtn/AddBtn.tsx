@@ -37,10 +37,10 @@ export default function AddBtn() {
         if (pic) {
             files.append("files", pic, pic.name);
         }
-        axios.post("http://localhost:1337/upload", files).then((response) => {
+        axios.post("http://52.47.202.39:1337/upload", files).then((response) => {
             dataform.append("picture", response.data.id)
           //  const id = {...response.data}
-            axios.post("http://localhost:1337/signatures", {username: name, more: more, picture: response.data[0].id})
+            axios.post("http://52.47.202.39:1337/signatures", {username: name, more: more, picture: response.data[0].id})
         })
     }
     return (
