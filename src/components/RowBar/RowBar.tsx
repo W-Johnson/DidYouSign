@@ -10,12 +10,12 @@ export default function RowBar() {
 
     const [contentList, setContentList] = useState<IInfoUser[]>([])
     const getNode =  () => {
-         axios.get("http://localhost:1337/signatures").then(response => {
+         axios.get("http://52.47.202.39:1337/signatures").then(response => {
             const infoList = response.data.map((obj: any) => {
                 return {
                     username: obj.username,
                     more: obj.more,
-                    image: "http://localhost:1337" + obj.picture.url
+                    image: "http://52.47.202.39:1337" + obj.picture.url
                 }
             });
             setContentList(infoList)
@@ -31,7 +31,7 @@ export default function RowBar() {
     )
     return (
         <div className={"principal-part"}>
-            {/*  <img src={"http://localhost:1337/uploads/IMG_0062_b8b52eb7ff.JPG"} alt={"cdr"}/> */}
+            
             <div className="bar">
                 {contentList.map((sign, id) => {
                     left = !left;
