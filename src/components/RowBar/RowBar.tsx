@@ -18,7 +18,7 @@ export default function RowBar({contentList, setContentList} : Props) {
                 return {
                     username: obj.attributes.username,
                     more: obj.attributes.more,
-                    image: "https://murmuring-mountain-00929.herokuapp.com" + obj.attributes.picture.data.attributes.url
+                    image: "https://murmuring-mountain-00929.herokuapp.com" + obj.attributes.picture?.data?.attributes?.url
                 }
             });
             setContentList(infoList)
