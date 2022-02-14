@@ -1,6 +1,5 @@
 import React from 'react'
 import Popover from '@mui/material/Popover';
-
 import './Node.scss'
 import {IInfoUser} from "../../interface";
 import CardNode from "../CardNode/CardNode";

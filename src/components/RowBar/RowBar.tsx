@@ -1,21 +1,24 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 import './RowBar.scss'
 import Node from "../Node/Node"
-import {IInfoUser} from "../../interface";
 import axios from "axios";
-import CardNode from "../CardNode/CardNode";
 
-export default function RowBar() {
+interface Props {
+    contentList: any[],
+    setContentList: any
+}
+
+export default function RowBar({contentList, setContentList} : Props) {
 
 
-    const [contentList, setContentList] = useState<IInfoUser[]>([])
     const getNode =  () => {
-         axios.get("http://52.47.202.39:1337/signatures").then(response => {
-            const infoList = response.data.map((obj: any) => {
+        console.log("in GetNode")
+         axios.get("https://murmuring-mountain-00929.herokuapp.com/api/signatures?populate=%2A").then(response => {
+            const infoList = response.data.data.map((obj: any) => {
                 return {
-                    username: obj.username,
-                    more: obj.more,
-                    image: "http://52.47.202.39:1337" + obj.picture.url
+                    username: obj.attributes.username,
+                    more: obj.attributes.more,
+                    image: "https://murmuring-mountain-00929.herokuapp.com" + obj.attributes.picture.data.attributes.url
                 }
             });
             setContentList(infoList)

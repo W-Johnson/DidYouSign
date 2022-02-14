@@ -20,7 +20,12 @@ const style = {
     gap: 3,
 
 };
-export default function AddBtn() {
+
+interface Props{
+    contentList: any[],
+    setContentList: any
+}
+export default function AddBtn({setContentList, contentList}: Props) {
 
 
     const [open, setOpen] = useState(false)
@@ -30,18 +35,19 @@ export default function AddBtn() {
 
     const addSign = () => {
         const dataform = new FormData()
-        const files = new FormData()
-
-        dataform.append("username", name);
-        dataform.append("more", more);
+        const data = {username: name, more:more}
+        dataform.append("data", JSON.stringify(data));
         if (pic) {
-            files.append("files", pic, pic.name);
+            dataform.append("files.picture", pic, pic.name);
         }
-        axios.post("http://52.47.202.39:1337/upload", files).then((response) => {
-            dataform.append("picture", response.data.id)
-          //  const id = {...response.data}
-            axios.post("http://52.47.202.39:1337/signatures", {username: name, more: more, picture: response.data[0].id})
-        })
+        axios.post("https://murmuring-mountain-00929.herokuapp.com/api/signatures?populate=%2A", dataform).then(response => {
+            const obj = response.data.data.attributes;
+            const newElement = {
+                username: obj.username,
+                more: obj.more,
+                image: "https://murmuring-mountain-00929.herokuapp.com" + obj.picture.data.attributes.url
+            }
+            setContentList([...contentList, newElement])})
     }
     return (
         <Box>
@@ -50,10 +56,8 @@ export default function AddBtn() {
             </Button>
             <Modal open={open} onClose={() => setOpen(!open)}>
                 <Box className={"AddSignModal"} sx={{...style, flexDirection: 'column'}}>
-                    <label htmlFor={"avatar"}>
-                        <Avatar alt="avatar-user" sx={{width: 100, height: 100, cursor: "pointer"}} src={pic?.name}/>
-                    </label>
-                    <input id={"avatar"} accept="image/png, image/jpeg" type={"file"} style={{display: "none"}}
+
+                    <input id={"avatar"} accept="image/png, image/jpeg" type={"file"}
                            onChange={(event) => {
                                if (event.currentTarget.files && event.currentTarget.files.length > 0)
                                    setPic(event.currentTarget.files[0])
