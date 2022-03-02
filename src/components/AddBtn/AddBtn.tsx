@@ -52,17 +52,12 @@ export default function AddBtn({setContentList, contentList}: Props) {
     return (
         <Box>
             <Button className={"add-btn"} variant={"contained"} startIcon={<AddIcon/>} onClick={() => setOpen(!open)}>
-                Add you'r signature
+                Add your signature
             </Button>
             <Modal open={open} onClose={() => setOpen(!open)}>
                 <Box className={"AddSignModal"} sx={{...style, flexDirection: 'column'}}>
 
-                    <input id={"avatar"} accept="image/png, image/jpeg" type={"file"}
-                           onChange={(event) => {
-                               if (event.currentTarget.files && event.currentTarget.files.length > 0)
-                                   setPic(event.currentTarget.files[0])
 
-                           }}/>
                     <TextField id="outlined-basic" label="Name" variant="outlined" fullWidth={true}
                                onChange={(event) => {
                                    setName(event.currentTarget.value)

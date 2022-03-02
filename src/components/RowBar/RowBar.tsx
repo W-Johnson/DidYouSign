@@ -40,11 +40,11 @@ export default function RowBar({contentList, setContentList} : Props) {
                     left = !left;
                     return (
                         <div className={"part-node"} key={id}>
-                            <div className="bar-part"/>
                             <Node info={sign} left={left}/>
+                            <div className="bar-part"/>
                         </div>
                     )
-                })}
+                }).reverse()}
             </div>
         </div>
     )

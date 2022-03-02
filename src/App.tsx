@@ -4,6 +4,7 @@ import Header from "./components/Header/Header";
 import React, {useState} from "react";
 import RowBar from "./components/RowBar/RowBar";
 import {IInfoUser} from "./interface";
+import SocialMedia from "./components/SocialMedia";
 function App() {
 
 
@@ -11,8 +12,10 @@ function App() {
     return (
         <div className="App">
             <Header setContentList={setContentList} contentList={contentList}/>
-            <RowBar contentList={contentList} setContentList={setContentList}/>
-
+            <div>
+                <SocialMedia/>
+                <RowBar contentList={contentList} setContentList={setContentList}/>
+            </div>
         </div>
     );
 }

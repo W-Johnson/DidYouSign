@@ -14,7 +14,6 @@ export  default function CardNode({imageSrc, name, more}: Props){
     return (
         <Card sx={{minWidth: 275}}>
             <CardContent sx={{display:"flex", justifyContent:"center", flexDirection:"column", alignItems:"center"}}>
-                <img style={{width:"8em"}} src={noImg < 0? imageSrc : "https://murmuring-mountain-00929.herokuapp.com/uploads/small_question_be5a4e225e.png"} alt={"node-pic"}/>
                 <Typography sx={{mb: 1.5}} color="text.primary">
                     {name}
                 </Typography>
