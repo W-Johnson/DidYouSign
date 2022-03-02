@@ -45,7 +45,7 @@ export default function AddBtn({setContentList, contentList}: Props) {
             const newElement = {
                 username: obj.username,
                 more: obj.more,
-                image: "https://murmuring-mountain-00929.herokuapp.com" + obj.picture.data.attributes.url
+                //image: "https://murmuring-mountain-00929.herokuapp.com" + obj.picture.data.attributes.url
             }
             setContentList([...contentList, newElement])})
     }
